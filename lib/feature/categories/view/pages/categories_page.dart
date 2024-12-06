@@ -157,7 +157,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
             filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
             child: AlertDialog(
               content: Container(
-                  height: ,
+                  // height: ,
                   width: double.infinity,
                   child: TextField(
                     controller: _titleController,
