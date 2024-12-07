@@ -156,36 +156,51 @@ class _CategoriesPageState extends State<CategoriesPage> {
           return BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
             child: AlertDialog(
-              content: Container(
-                  // height: ,
-                  width: double.infinity,
-                  child: TextField(
-                    controller: _titleController,
-                    decoration:
-                        const InputDecoration(hintText: 'Enter Todo Title'),
-                  )),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(0)),
+
+              content: Stack(
+                children: [
+                  Container(
+                      decoration:
+                          BoxDecoration(borderRadius: BorderRadius.circular(0)),
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      width: double.infinity,
+                      child: Column(
+                        children: [
+                          TextField(
+                            controller: _titleController,
+                            decoration: const InputDecoration(
+                                hintText: 'Title', border: InputBorder.none),
+                          ),
+                          TextField(
+                            controller: _titleController,
+                            decoration: const InputDecoration(
+                                hintText: 'Title', border: InputBorder.none),
+                          ),
+                          TextField(
+                            controller: _titleController,
+                            decoration: const InputDecoration(
+                                hintText: '0 task', border: InputBorder.none),
+                          ),
+                        ],
+                      )),
+                  Positioned(
+                    left: 210,
+                    child: Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(color: Colors.black),
+                    ),
+                  )
+                ],
+              ),
+
               // ,),
               // title: const Text('Add Todo'),
               // content: TextField(
               //   controller: _titleController,
               //  decoration: const InputDecoration(hintText: 'Enter Todo Title'),
-
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Cancel'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    // Add the new todo to your list here
-                    // ...
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Add'),
-                ),
-              ],
             ),
           );
         });
