@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:mechine___test/core/theme/app_theme.dart';
+import 'package:mechine___test/feature/auth/controller/auth_controller.dart';
 import 'package:mechine___test/feature/auth/view/widgets/custom_button.dart';
 import 'package:mechine___test/feature/auth/view/widgets/custom_textfield.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final authController = Get.find<AuthController>();
+
+   LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +32,13 @@ class LoginPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: spaces.space_400),
-          const CustomTextField(
+           CustomTextField(controller: emailController,
             label: "Email",
           ),
           SizedBox(
             height: spaces.space_400,
           ),
-          const CustomTextField(
+           CustomTextField(controller: passwordController,
             label: "Password",
           ),
           TextButton(
@@ -42,7 +50,7 @@ class LoginPage extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
-            child: CustomButton(
+            child: CustomButton(onPressed: (){},
               txt: "CONTINUE",
             ),
           ),

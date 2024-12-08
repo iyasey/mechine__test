@@ -9,6 +9,7 @@ class ForgotPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+    final emailController=TextEditingController();
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +34,7 @@ class ForgotPassword extends StatelessWidget {
           SizedBox(
             height: height * 0.04,
           ),
-          CustomTextField(label: "Email"),
+          CustomTextField(controller: emailController,label: "Email"),
           SizedBox(
             height: height * 0.01,
           ),
@@ -54,8 +55,8 @@ class ForgotPassword extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: width * 0.07),
             child: CustomButton(
+              onPressed: () {},
               txt: " CONTINUE",
-           
             ),
           ),
           SizedBox(
