@@ -14,20 +14,18 @@ class ListTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppTheme.of(context).colors;
+
     final typography = AppTheme.of(context).typography;
     return ListTile(
-      onTap: ontap,
-      leading: Icon(
-        icon,
-        color: Theme.of(context).brightness == Brightness.dark
-            ? Colors.white
-            : Colors.black,
-      ),
-      title: Text(text,
-          style: typography.h400.copyWith(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.white
-                  : Colors.black)),
-);
-}
+        onTap: ontap,
+        leading: Icon(
+          icon,
+          color: colors.text,
+        ),
+        title: Text(
+          text,
+          style: typography.h400.copyWith(color: colors.text),
+        ));
+  }
 }

@@ -2,7 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-import 'package:mechine___test/core/theme/theme_provider.dart';
+import 'package:mechine___test/core/theme/color_palette.dart';
+import 'package:mechine___test/core/theme/dark_theme.dart';
+import 'package:mechine___test/core/theme/extension/color_extension.dart';
+import 'package:mechine___test/core/theme/extension/space_extension.dart';
+import 'package:mechine___test/core/theme/extension/typography_extension.dart';
+
 import 'package:mechine___test/feature/auth/controller/auth_controller.dart';
 import 'package:mechine___test/feature/auth/view/pages/login_page.dart';
 import 'package:mechine___test/feature/auth/view/pages/signup_page.dart';
@@ -17,14 +22,50 @@ void main() async {
   runApp(ProviderScope(child: MyApp()));
 }
 
-class MyApp extends ConsumerWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return GetMaterialApp(
+      themeMode: ThemeMode.light,
+      darkTheme: ThemeData(
+        scaffoldBackgroundColor: AppColorPalettes.black,
+        extensions: <ThemeExtension<dynamic>>[
+          AppColorExtension(
+            primary: AppColorPalettes.black,
+            secondary: AppColorPalettes.grey1000,
+            text: Colors.white,
+            textInverse: Color(0xFF5473bb),
+            textSubtle: Colors.grey,
+            textSubtlest: Colors.grey[400]!,
+            textDisabled: Colors.grey[600]!,
+            bottomNavBorder: Colors.blueGrey,
+          ),
+        ],
+      ),
+      theme: ThemeData(
+        scaffoldBackgroundColor: AppColorPalettes.white,
+        extensions: <ThemeExtension<dynamic>>[
+          AppColorExtension(
+            primary: AppColorPalettes.white,
+            secondary: AppColorPalettes.white500,
+            text: AppColorPalettes.black500,
+            textInverse: Color(0xFF5473bb),
+            textSubtle: Colors.grey,
+            textSubtlest: Colors.grey[400]!,
+            textDisabled: Colors.grey[200]!,
+            bottomNavBorder: Colors.blueGrey,
+          ),
+          AppSpaceExtension.fromBaseSpace(8),
+          AppTypographyExtension.fromColors(
+            defaultFontColor: Colors.black,
+            linkColor: Colors.blue,
+            dimFontColor: Colors.grey,
+          ),
+        ],
+      ),
       title: 'Flutter Demo',
-      theme: ref.watch(themeProvider),
       initialBinding: BindingsBuilder(() {
         Get.put(AuthController());
       }),
@@ -33,6 +74,7 @@ class MyApp extends ConsumerWidget {
     );
   }
 }
+
 class AuthControll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -40,11 +82,12 @@ class AuthControll extends StatelessWidget {
 
     return Obx(() {
       if (authController.user.value != null) {
-
-         final userId = authController.user.value!.uid;
-        return CategoriesPage(userId: userId,); 
+        final userId = authController.user.value!.uid;
+        return CategoriesPage(
+          userId: userId,
+        );
       } else {
-        return SignupPage(); 
+        return SignupPage();
       }
     });
   }

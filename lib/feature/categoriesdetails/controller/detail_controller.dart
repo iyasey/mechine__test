@@ -12,10 +12,12 @@ class DetailController extends GetxController {
   }
 
   var detail = <DetailModel>[].obs;
+  var taskLengths = <String, int>{}.obs;
 
   void fetchDetails(String userId, String todoId) {
     _todoService.getDetails(userId, todoId).listen((detailsList) {
       detail.value = detailsList;
+      taskLengths[todoId] = detailsList.length;
     }, onError: (error) {
       Get.snackbar("Error", "failed fetching $error");
     });

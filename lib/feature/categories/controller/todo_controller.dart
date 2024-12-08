@@ -15,7 +15,7 @@ class TodoController extends GetxController {
   }
 
   var todos = <TodoModel>[].obs;
-
+ 
   void fetchTodos(String userId) {
     _todoServices.getTodos(userId).listen((todoList) {
       print(todoList);

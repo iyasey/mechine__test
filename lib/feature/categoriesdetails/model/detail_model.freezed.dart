@@ -22,7 +22,7 @@ DetailModel _$DetailModelFromJson(Map<String, dynamic> json) {
 mixin _$DetailModel {
   String get id => throw _privateConstructorUsedError;
   String get task => throw _privateConstructorUsedError;
-  bool? get isClicked => throw _privateConstructorUsedError;
+  bool get isClicked => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $DetailModelCopyWith<$Res> {
           DetailModel value, $Res Function(DetailModel) then) =
       _$DetailModelCopyWithImpl<$Res, DetailModel>;
   @useResult
-  $Res call({String id, String task, bool? isClicked, DateTime? createdAt});
+  $Res call({String id, String task, bool isClicked, DateTime? createdAt});
 }
 
 /// @nodoc
@@ -55,7 +55,7 @@ class _$DetailModelCopyWithImpl<$Res, $Val extends DetailModel>
   $Res call({
     Object? id = null,
     Object? task = null,
-    Object? isClicked = freezed,
+    Object? isClicked = null,
     Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -67,10 +67,10 @@ class _$DetailModelCopyWithImpl<$Res, $Val extends DetailModel>
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
               as String,
-      isClicked: freezed == isClicked
+      isClicked: null == isClicked
           ? _value.isClicked
           : isClicked // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -87,7 +87,7 @@ abstract class _$$DetailModelImplCopyWith<$Res>
       __$$DetailModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String task, bool? isClicked, DateTime? createdAt});
+  $Res call({String id, String task, bool isClicked, DateTime? createdAt});
 }
 
 /// @nodoc
@@ -103,7 +103,7 @@ class __$$DetailModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? task = null,
-    Object? isClicked = freezed,
+    Object? isClicked = null,
     Object? createdAt = freezed,
   }) {
     return _then(_$DetailModelImpl(
@@ -115,10 +115,10 @@ class __$$DetailModelImplCopyWithImpl<$Res>
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
               as String,
-      isClicked: freezed == isClicked
+      isClicked: null == isClicked
           ? _value.isClicked
           : isClicked // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -131,7 +131,10 @@ class __$$DetailModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DetailModelImpl implements _DetailModel {
   _$DetailModelImpl(
-      {required this.id, required this.task, this.isClicked, this.createdAt});
+      {required this.id,
+      required this.task,
+      this.isClicked = false,
+      this.createdAt});
 
   factory _$DetailModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DetailModelImplFromJson(json);
@@ -141,7 +144,8 @@ class _$DetailModelImpl implements _DetailModel {
   @override
   final String task;
   @override
-  final bool? isClicked;
+  @JsonKey()
+  final bool isClicked;
   @override
   final DateTime? createdAt;
 
@@ -185,7 +189,7 @@ abstract class _DetailModel implements DetailModel {
   factory _DetailModel(
       {required final String id,
       required final String task,
-      final bool? isClicked,
+      final bool isClicked,
       final DateTime? createdAt}) = _$DetailModelImpl;
 
   factory _DetailModel.fromJson(Map<String, dynamic> json) =
@@ -196,7 +200,7 @@ abstract class _DetailModel implements DetailModel {
   @override
   String get task;
   @override
-  bool? get isClicked;
+  bool get isClicked;
   @override
   DateTime? get createdAt;
   @override

@@ -6,14 +6,13 @@ import 'package:mechine___test/core/theme/extension/space_extension.dart';
 import 'package:mechine___test/core/theme/extension/typography_extension.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'dark_theme.g.dart';
 
-final _darkTheme = ThemeData(
+final darkTheme = ThemeData(
   brightness: Brightness.dark,
   extensions: [
     AppColorExtension(
-      primary: AppColorPalettes.blue400,
-      secondary: AppColorPalettes.grey1000,
+      primary: AppColorPalettes.white,
+      secondary: AppColorPalettes.white500,
       text: AppColorPalettes.white500,
       textInverse: AppColorPalettes.blue900,
       textSubtle: AppColorPalettes.gray300,
@@ -30,7 +29,3 @@ final _darkTheme = ThemeData(
   ],
 );
 
-@riverpod
-ThemeData darkTheme(DarkThemeRef ref) {
-  return _darkTheme;
-}

@@ -7,7 +7,7 @@ part 'detail_model.g.dart';
 class DetailModel with _$DetailModel {
   factory DetailModel(
       {required String id,
-      required String task,bool? isClicked,
+      required String task,@Default(false) bool isClicked,
       DateTime? createdAt}) = _DetailModel;
 
   factory DetailModel.fromJson(Map<String, dynamic> json) =>

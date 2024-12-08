@@ -10,7 +10,7 @@ _$DetailModelImpl _$$DetailModelImplFromJson(Map<String, dynamic> json) =>
     _$DetailModelImpl(
       id: json['id'] as String,
       task: json['task'] as String,
-      isClicked: json['isClicked'] as bool?,
+      isClicked: json['isClicked'] as bool? ?? false,
       createdAt: json['createdAt'] == null
           ? null
           : DateTime.parse(json['createdAt'] as String),

@@ -31,4 +31,6 @@ class DetailServices {
         .snapshots()
         .map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
   }
+
+
 }

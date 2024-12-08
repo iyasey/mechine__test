@@ -3,7 +3,8 @@ import 'package:mechine___test/core/theme/app_theme.dart';
 import 'package:mechine___test/feature/categories/view/widgets/list_tile_widget.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+  final String userName;
+  const SettingsPage({super.key, required this.userName});
 
   @override
   Widget build(BuildContext context) {
@@ -11,23 +12,20 @@ class SettingsPage extends StatelessWidget {
     final spaces = AppTheme.of(context).spaces;
     final typography = AppTheme.of(context).typography;
     return Scaffold(
-      backgroundColor: colors.text,
+      backgroundColor: colors.primary,
       appBar: AppBar(
-        backgroundColor: colors.text,
-        foregroundColor: Theme.of(context).brightness == Brightness.dark
-            ? Colors.white
-            : Colors.black,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.arrow_back_rounded, size: spaces.space_100 * 3.6),
-        ),
-        title: Text("Settings", style: typography.h600),
+        backgroundColor: colors.primary,
+        // foregroundColor: Theme.of(context).brightness == Brightness.dark
+        //     ? Colors.white
+        //     : Colors.black,
+        title: Text("Settings",
+            style: typography.h600.copyWith(color: colors.text)),
         centerTitle: true,
       ),
       body: Column(
         children: [
           SizedBox(
-            height: MediaQuery.sizeOf(context).height / 20,
+            height: MediaQuery.sizeOf(context).height / 21,
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: spaces.space_500),
@@ -48,12 +46,12 @@ class SettingsPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Malak Idrissi",
-                          style: typography.h400,
+                          userName,
+                          style: typography.h400.copyWith(color: colors.text),
                         ),
                         Text(
                           "Rabat, Morocco",
-                          style: typography.code,
+                          style: typography.code.copyWith(color: colors.text),
                         )
                       ],
                     ),
@@ -62,11 +60,11 @@ class SettingsPage extends StatelessWidget {
                     ),
                     InkWell(
                       child: CircleAvatar(
-                        backgroundColor: colors.secondary,
+                        backgroundColor: colors.text,
                         radius: MediaQuery.sizeOf(context).width / 16,
                         child: Icon(
                           Icons.edit,
-                          color: colors.text,
+                          color: colors.primary,
                         ),
                       ),
                       onTap: () {},
@@ -78,8 +76,8 @@ class SettingsPage extends StatelessWidget {
                 ),
 
                 Text(
-                  "Hi! My name is Malak,I'm a community manager from Rabat, Morocco",
-                  style: typography.h200.copyWith(color: colors.secondary),
+                  "Hi! My name is $userName,I'm a community manager from Rabat, Morocco",
+                  style: typography.h200.copyWith(color: colors.text),
                 ),
                 SizedBox(
                   height: spaces.space_900,

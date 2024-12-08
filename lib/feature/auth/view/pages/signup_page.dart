@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:mechine___test/core/theme/app_theme.dart';
 import 'package:mechine___test/feature/auth/controller/auth_controller.dart';
+import 'package:mechine___test/feature/auth/view/pages/login_page.dart';
 import 'package:mechine___test/feature/auth/view/widgets/custom_button.dart';
 import 'package:mechine___test/feature/auth/view/widgets/custom_textfield.dart';
 
@@ -34,6 +36,8 @@ class SignupPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppTheme.of(context).colors;
+
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -43,17 +47,23 @@ class SignupPage extends StatelessWidget {
           Row(
             children: [
               IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  icon: Icon(
                     Icons.arrow_back,
+                    color: colors.text,
                     weight: 30,
                   )),
               SizedBox(
                 width: width * 0.1,
               ),
-              const Text(
+              Text(
                 "Create an Account",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: colors.text,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -87,15 +97,21 @@ class SignupPage extends StatelessWidget {
           SizedBox(
             height: height * 0.04,
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Already have an account? "),
               Text(
-                "Login",
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                "Already have an account? ",
+                style: TextStyle(color: colors.text),
               ),
+              TextButton(
+                  onPressed: () {
+                    Get.to(LoginPage());
+                  },
+                  child: Text(
+                    "Log In",
+                    style: TextStyle(color: colors.text),
+                  ))
             ],
           )
         ],

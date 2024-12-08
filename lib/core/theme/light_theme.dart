@@ -4,17 +4,16 @@ import 'package:mechine___test/core/theme/color_palette.dart';
 import 'package:mechine___test/core/theme/extension/color_extension.dart';
 import 'package:mechine___test/core/theme/extension/space_extension.dart';
 import 'package:mechine___test/core/theme/extension/typography_extension.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'light_theme.g.dart';
 
-final _lightTheme = ThemeData(
+
+final ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   extensions: [
     AppColorExtension(
-      primary: AppColorPalettes.blue400,
+      primary: AppColorPalettes.white,
       secondary: AppColorPalettes.grey1000,
-      text: AppColorPalettes.white500,
+      text: AppColorPalettes.black500,
       textInverse: AppColorPalettes.gray200,
       textSubtle: AppColorPalettes.gray300,
       textSubtlest: AppColorPalettes.grey400,
@@ -30,7 +29,3 @@ final _lightTheme = ThemeData(
   ],
 );
 
-@riverpod
-ThemeData lightTheme(LightThemeRef ref) {
-  return _lightTheme;
-}

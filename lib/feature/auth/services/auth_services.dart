@@ -22,4 +22,12 @@ class AuthServices {
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
   }
+
+  static Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
