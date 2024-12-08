@@ -23,11 +23,10 @@ class DetailServices {
         .collection('todos')
         .doc(todoId)
         .collection('detail')
-        .orderBy('createdAt', descending: true)
         .withConverter<DetailModel>(
           fromFirestore: (snapshot, _) =>
               DetailModel.fromJson({'id': snapshot.id, ...snapshot.data()!}),
-          toFirestore: (comment, _) => comment.toJson(),
+          toFirestore: (detail, _) => detail.toJson(),
         )
         .snapshots()
         .map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());

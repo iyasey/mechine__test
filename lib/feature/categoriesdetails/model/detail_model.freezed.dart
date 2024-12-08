@@ -15,13 +15,14 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 DetailModel _$DetailModelFromJson(Map<String, dynamic> json) {
-  return _UserModel.fromJson(json);
+  return _DetailModel.fromJson(json);
 }
 
 /// @nodoc
 mixin _$DetailModel {
   String get id => throw _privateConstructorUsedError;
   String get task => throw _privateConstructorUsedError;
+  bool? get isClicked => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +37,7 @@ abstract class $DetailModelCopyWith<$Res> {
           DetailModel value, $Res Function(DetailModel) then) =
       _$DetailModelCopyWithImpl<$Res, DetailModel>;
   @useResult
-  $Res call({String id, String task, DateTime? createdAt});
+  $Res call({String id, String task, bool? isClicked, DateTime? createdAt});
 }
 
 /// @nodoc
@@ -54,6 +55,7 @@ class _$DetailModelCopyWithImpl<$Res, $Val extends DetailModel>
   $Res call({
     Object? id = null,
     Object? task = null,
+    Object? isClicked = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -65,6 +67,10 @@ class _$DetailModelCopyWithImpl<$Res, $Val extends DetailModel>
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
               as String,
+      isClicked: freezed == isClicked
+          ? _value.isClicked
+          : isClicked // ignore: cast_nullable_to_non_nullable
+              as bool?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -74,22 +80,22 @@ class _$DetailModelCopyWithImpl<$Res, $Val extends DetailModel>
 }
 
 /// @nodoc
-abstract class _$$UserModelImplCopyWith<$Res>
+abstract class _$$DetailModelImplCopyWith<$Res>
     implements $DetailModelCopyWith<$Res> {
-  factory _$$UserModelImplCopyWith(
-          _$UserModelImpl value, $Res Function(_$UserModelImpl) then) =
-      __$$UserModelImplCopyWithImpl<$Res>;
+  factory _$$DetailModelImplCopyWith(
+          _$DetailModelImpl value, $Res Function(_$DetailModelImpl) then) =
+      __$$DetailModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String task, DateTime? createdAt});
+  $Res call({String id, String task, bool? isClicked, DateTime? createdAt});
 }
 
 /// @nodoc
-class __$$UserModelImplCopyWithImpl<$Res>
-    extends _$DetailModelCopyWithImpl<$Res, _$UserModelImpl>
-    implements _$$UserModelImplCopyWith<$Res> {
-  __$$UserModelImplCopyWithImpl(
-      _$UserModelImpl _value, $Res Function(_$UserModelImpl) _then)
+class __$$DetailModelImplCopyWithImpl<$Res>
+    extends _$DetailModelCopyWithImpl<$Res, _$DetailModelImpl>
+    implements _$$DetailModelImplCopyWith<$Res> {
+  __$$DetailModelImplCopyWithImpl(
+      _$DetailModelImpl _value, $Res Function(_$DetailModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -97,9 +103,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? task = null,
+    Object? isClicked = freezed,
     Object? createdAt = freezed,
   }) {
-    return _then(_$UserModelImpl(
+    return _then(_$DetailModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -108,6 +115,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
               as String,
+      isClicked: freezed == isClicked
+          ? _value.isClicked
+          : isClicked // ignore: cast_nullable_to_non_nullable
+              as bool?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -118,70 +129,78 @@ class __$$UserModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserModelImpl implements _UserModel {
-  _$UserModelImpl({required this.id, required this.task, this.createdAt});
+class _$DetailModelImpl implements _DetailModel {
+  _$DetailModelImpl(
+      {required this.id, required this.task, this.isClicked, this.createdAt});
 
-  factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserModelImplFromJson(json);
+  factory _$DetailModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DetailModelImplFromJson(json);
 
   @override
   final String id;
   @override
   final String task;
   @override
+  final bool? isClicked;
+  @override
   final DateTime? createdAt;
 
   @override
   String toString() {
-    return 'DetailModel(id: $id, task: $task, createdAt: $createdAt)';
+    return 'DetailModel(id: $id, task: $task, isClicked: $isClicked, createdAt: $createdAt)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserModelImpl &&
+            other is _$DetailModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.task, task) || other.task == task) &&
+            (identical(other.isClicked, isClicked) ||
+                other.isClicked == isClicked) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, task, createdAt);
+  int get hashCode => Object.hash(runtimeType, id, task, isClicked, createdAt);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
-      __$$UserModelImplCopyWithImpl<_$UserModelImpl>(this, _$identity);
+  _$$DetailModelImplCopyWith<_$DetailModelImpl> get copyWith =>
+      __$$DetailModelImplCopyWithImpl<_$DetailModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserModelImplToJson(
+    return _$$DetailModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _UserModel implements DetailModel {
-  factory _UserModel(
+abstract class _DetailModel implements DetailModel {
+  factory _DetailModel(
       {required final String id,
       required final String task,
-      final DateTime? createdAt}) = _$UserModelImpl;
+      final bool? isClicked,
+      final DateTime? createdAt}) = _$DetailModelImpl;
 
-  factory _UserModel.fromJson(Map<String, dynamic> json) =
-      _$UserModelImpl.fromJson;
+  factory _DetailModel.fromJson(Map<String, dynamic> json) =
+      _$DetailModelImpl.fromJson;
 
   @override
   String get id;
   @override
   String get task;
   @override
+  bool? get isClicked;
+  @override
   DateTime? get createdAt;
   @override
   @JsonKey(ignore: true)
-  _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
+  _$$DetailModelImplCopyWith<_$DetailModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
