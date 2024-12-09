@@ -6,7 +6,6 @@ import 'package:mechine___test/core/theme/app_theme.dart';
 import 'package:mechine___test/feature/auth/controller/auth_controller.dart';
 import 'package:mechine___test/feature/categories/controller/todo_controller.dart';
 import 'package:mechine___test/feature/categories/view/pages/settings_page.dart';
-import 'package:mechine___test/feature/categoriesdetails/controller/detail_controller.dart';
 import 'package:mechine___test/feature/categoriesdetails/view/pages/category_detail_page.dart';
 
 class CategoriesPage extends StatelessWidget {
@@ -15,7 +14,6 @@ class CategoriesPage extends StatelessWidget {
   final String userId;
 
   final TodoController todoController = Get.put(TodoController());
-  final DetailController _detailController = Get.put(DetailController());
 
   CategoriesPage({
     super.key,
@@ -53,9 +51,6 @@ class CategoriesPage extends StatelessWidget {
                       hintText: 'Title',
                       border: InputBorder.none,
                     ),
-
-                    
-
                     onSubmitted: (_) {
                       final title = todoController.titleController.text;
                       final subtitle = todoController.taskController.text;
@@ -65,7 +60,6 @@ class CategoriesPage extends StatelessWidget {
                       Get.back();
                     },
                   ),
-                  
                 ],
               ),
             ),
@@ -103,7 +97,11 @@ class CategoriesPage extends StatelessWidget {
                   Get.snackbar('Error', 'User not authenticated');
                 }
               },
-              child: const CircleAvatar()),
+              child: const CircleAvatar(
+                backgroundImage: AssetImage(
+                  "assets/images/f56188980615ee32fe42d4fd597b3ca3.jpg",
+                ),
+              )),
         ),
         actions: [
           IconButton(
@@ -129,7 +127,10 @@ class CategoriesPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const CircleAvatar(),
+                    const CircleAvatar(
+                      backgroundImage: AssetImage(
+                          "assets/images/f56188980615ee32fe42d4fd597b3ca3.jpg"),
+                    ),
                     SizedBox(
                       width: width * 0.02,
                     ),
@@ -137,7 +138,7 @@ class CategoriesPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('"The memories is a shield and life helper."',
+                        Text('"The memories is a shield and \n life  helper."',
                             style:
                                 typography.h200.copyWith(color: colors.text)),
                         const Text(
