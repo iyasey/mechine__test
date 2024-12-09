@@ -97,6 +97,7 @@ class CategoryDetailPage extends StatelessWidget {
                                   _detailController.taskController.text;
                               _detailController.addDetails(
                                   userId, todoId, task);
+                              _detailController.taskController.clear();
                               Get.back();
                             },
                             controller: _detailController.taskController,
