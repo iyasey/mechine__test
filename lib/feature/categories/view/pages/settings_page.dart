@@ -15,9 +15,6 @@ class SettingsPage extends StatelessWidget {
       backgroundColor: colors.primary,
       appBar: AppBar(
         backgroundColor: colors.primary,
-        // foregroundColor: Theme.of(context).brightness == Brightness.dark
-        //     ? Colors.white
-        //     : Colors.black,
         title: Text("Settings",
             style: typography.h600.copyWith(color: colors.text)),
         centerTitle: true,

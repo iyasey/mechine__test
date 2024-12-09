@@ -4,7 +4,6 @@ import 'package:mechine___test/core/theme/color_palette.dart';
 import 'package:mechine___test/core/theme/extension/color_extension.dart';
 import 'package:mechine___test/core/theme/extension/space_extension.dart';
 import 'package:mechine___test/core/theme/extension/typography_extension.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 
 final darkTheme = ThemeData(

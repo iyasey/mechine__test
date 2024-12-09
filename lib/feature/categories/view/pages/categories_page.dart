@@ -2,9 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:mechine___test/core/theme/app_theme.dart';
-import 'package:mechine___test/core/theme/color_palette.dart';
 import 'package:mechine___test/feature/auth/controller/auth_controller.dart';
 import 'package:mechine___test/feature/categories/controller/todo_controller.dart';
 import 'package:mechine___test/feature/categories/view/pages/settings_page.dart';
@@ -20,16 +18,16 @@ class CategoriesPage extends StatelessWidget {
   final DetailController _detailController = Get.put(DetailController());
 
   CategoriesPage({
-    Key? key,
+    super.key,
     required this.userId,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     final colors = AppTheme.of(context).colors;
 
-    void _showAddTodoDialog() {
+    void showAddTodoDialog() {
       Get.dialog(
         BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
@@ -49,30 +47,15 @@ class CategoriesPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // TextField(
-                  //   controller: todoController.titleController,
-                  //   decoration: const InputDecoration(
-                  //     hintText: 'Title',
-                  //     border: InputBorder.none,
-                  //   ),
-                  // ),
                   TextField(
                     controller: todoController.titleController,
                     decoration: const InputDecoration(
                       hintText: 'Title',
                       border: InputBorder.none,
                     ),
-                    textInputAction: TextInputAction.next,
-                    onSubmitted: (_) {
-                      FocusScope.of(context).nextFocus();
-                    },
-                  ),
-                  TextField(
-                    controller: todoController.taskController,
-                    decoration: const InputDecoration(
-                      hintText: '0 task',
-                      border: InputBorder.none,
-                    ),
+
+                    
+
                     onSubmitted: (_) {
                       final title = todoController.titleController.text;
                       final subtitle = todoController.taskController.text;
@@ -82,6 +65,7 @@ class CategoriesPage extends StatelessWidget {
                       Get.back();
                     },
                   ),
+                  
                 ],
               ),
             ),
@@ -119,7 +103,7 @@ class CategoriesPage extends StatelessWidget {
                   Get.snackbar('Error', 'User not authenticated');
                 }
               },
-              child: CircleAvatar()),
+              child: const CircleAvatar()),
         ),
         actions: [
           IconButton(
@@ -136,28 +120,29 @@ class CategoriesPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Card(
-              color: colors.secondary,
-              // shape: RoundedRectangleBorder(
-              //   borderRadius: BorderRadius.circular(12),
-              // ),
-
-              child: Padding(
-                padding: EdgeInsets.all(spaces.space_400),
+              elevation: 5,
+              child: Container(
+                width: double.infinity,
+                height: height * 0.14,
+                color: colors.secondary,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CircleAvatar(),
+                    const CircleAvatar(),
                     SizedBox(
                       width: width * 0.02,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text('"The memories is a shield and life helper."',
                             style:
                                 typography.h200.copyWith(color: colors.text)),
-                        Text(
+                        const Text(
                           'Tamim Al-Barghouti',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                          style: TextStyle(fontSize: 12, color: Colors.grey),
                         ),
                       ],
                     ),
@@ -182,31 +167,26 @@ class CategoriesPage extends StatelessWidget {
                     if (index == 0) {
                       return InkWell(
                         onTap: () {
-                          _showAddTodoDialog();
+                          showAddTodoDialog();
                         },
                         child: Card(
+                          shape: const RoundedRectangleBorder(),
+                          color: colors.secondary,
                           elevation: 5,
-                          child: Container(
-                              height: spaces.space_700,
-                              width: spaces.space_700,
-                              decoration:
-                                  BoxDecoration(color: colors.secondary),
-                              child: Center(
-                                child: CircleAvatar(
-                                  radius: 20,
-                                  backgroundColor: colors.text,
-                                  child: Icon(
-                                    Icons.add,
-                                    color: colors.primary,
-                                  ),
-                                ),
-                              )),
+                          child: Center(
+                            child: CircleAvatar(
+                              radius: 20,
+                              backgroundColor: colors.text,
+                              child: Icon(
+                                Icons.add,
+                                color: colors.primary,
+                              ),
+                            ),
+                          ),
                         ),
                       );
                     } else {
                       final todo = todos[index - 1];
-                      final taskCount =
-                          _detailController.taskLengths[todo.id] ?? 0;
 
                       return InkWell(
                         onTap: () {
@@ -218,45 +198,39 @@ class CategoriesPage extends StatelessWidget {
                           ));
                         },
                         child: Card(
+                          shape: const RoundedRectangleBorder(),
+                          color: colors.secondary,
                           elevation: 5,
-                          child: Container(
-                            height: spaces.space_700,
-                            width: spaces.space_700,
-                            decoration: BoxDecoration(color: colors.secondary),
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  top: spaces.space_200,
-                                  left: spaces.space_300),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.task,
-                                    color: colors.text,
-                                  ),
-                                  Text(
-                                    todo.title,
-                                    style: typography.h800
-                                        .copyWith(color: colors.text),
-                                  ),
-                                  Text(
-                                    taskCount.toString(),
-                                    style: TextStyle(color: colors.text),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.more_vert,
-                                        color: colors.textInverse,
-                                      ),
-                                    ),
-                                  )
-                                ],
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Align(
+                                alignment: Alignment.center,
+                                child: Icon(
+                                  Icons.task,
+                                  color: colors.text,
+                                ),
                               ),
-                            ),
+                              Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  todo.title,
+                                  style: typography.h800
+                                      .copyWith(color: colors.text),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.more_vert,
+                                    color: colors.textSubtle,
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
                         ),
                       );

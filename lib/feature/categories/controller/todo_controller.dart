@@ -12,13 +12,13 @@ class TodoController extends GetxController {
   void clearFields() {
     titleController.clear();
     taskController.clear();
+    super.onClose();
   }
 
   var todos = <TodoModel>[].obs;
- 
+
   void fetchTodos(String userId) {
     _todoServices.getTodos(userId).listen((todoList) {
-      print(todoList);
       todos.value = todoList;
     });
   }

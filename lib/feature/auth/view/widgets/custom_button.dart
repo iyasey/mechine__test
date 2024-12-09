@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:mechine___test/core/theme/app_theme.dart';
 
+
 class CustomButton extends StatelessWidget {
   final String txt;
   VoidCallback onPressed;
@@ -21,7 +22,7 @@ class CustomButton extends StatelessWidget {
         child: Center(
             child: Text(
           txt,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         )),
       ),
     );

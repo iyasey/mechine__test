@@ -62,9 +62,7 @@ class AuthController extends GetxController {
     }
   }
 
-  // Stream<List<UserModel>> getUserStream() {
-  //   return TodoServices.getUserStream();
-  // }
+
 
   User? getCurrentUser() {
     try {
@@ -78,7 +76,7 @@ class AuthController extends GetxController {
   Future<void> forgotPassword(String email) async {
     try {
       await AuthServices.sendPasswordResetEmail(
-          email); // Call the service method
+          email); 
       Get.snackbar("Success", "Password reset email sent. Check your inbox.");
       Get.offAll(() => LoginPage());
     } catch (e) {

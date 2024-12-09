@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:mechine___test/core/theme/app_theme.dart';
 import 'package:mechine___test/feature/auth/controller/auth_controller.dart';
 import 'package:mechine___test/feature/auth/view/pages/login_page.dart';
@@ -41,80 +40,86 @@ class SignupPage extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            children: [
-              IconButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: colors.text,
-                    weight: 30,
-                  )),
-              SizedBox(
-                width: width * 0.1,
-              ),
-              Text(
-                "Create an Account",
-                style: TextStyle(
-                    color: colors.text,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: height * 0.01,
-          ),
-          CustomTextField(controller: nameController, label: "Full Name"),
-          SizedBox(
-            height: height * 0.01,
-          ),
-          CustomTextField(controller: emailController, label: "Email"),
-          SizedBox(
-            height: height * 0.01,
-          ),
-          CustomTextField(controller: passwordController, label: "Password"),
-          SizedBox(
-            height: height * 0.01,
-          ),
-          CustomTextField(
-              controller: confirmPasswordController, label: "Confirm Password"),
-          SizedBox(
-            height: height * 0.04,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: width * 0.07),
-            child: CustomButton(
-              onPressed: onSignUpButtonClicked,
-              txt: "CONTINUE",
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: height * 0.22,
             ),
-          ),
-          SizedBox(
-            height: height * 0.04,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Already have an account? ",
-                style: TextStyle(color: colors.text),
+            Row(
+              children: [
+                IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: colors.text,
+                      weight: 30,
+                    )),
+                SizedBox(
+                  width: width * 0.1,
+                ),
+                Text(
+                  "Create an Account",
+                  style: TextStyle(
+                      color: colors.text,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: height * 0.01,
+            ),
+            CustomTextField(controller: nameController, label: "Full Name"),
+            SizedBox(
+              height: height * 0.01,
+            ),
+            CustomTextField(controller: emailController, label: "Email"),
+            SizedBox(
+              height: height * 0.01,
+            ),
+            CustomTextField(controller: passwordController, label: "Password"),
+            SizedBox(
+              height: height * 0.01,
+            ),
+            CustomTextField(
+                controller: confirmPasswordController,
+                label: "Confirm Password"),
+            SizedBox(
+              height: height * 0.04,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: width * 0.07),
+              child: CustomButton(
+                onPressed: onSignUpButtonClicked,
+                txt: "CONTINUE",
               ),
-              TextButton(
-                  onPressed: () {
-                    Get.to(LoginPage());
-                  },
-                  child: Text(
-                    "Log In",
-                    style: TextStyle(color: colors.text),
-                  ))
-            ],
-          )
-        ],
+            ),
+            SizedBox(
+              height: height * 0.04,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Already have an account? ",
+                  style: TextStyle(color: colors.text),
+                ),
+                TextButton(
+                    onPressed: () {
+                      Get.to(LoginPage());
+                    },
+                    child: Text(
+                      "Log In",
+                      style: TextStyle(color: colors.text),
+                    ))
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

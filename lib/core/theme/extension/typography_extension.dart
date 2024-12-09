@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 @immutable
 class AppTypographyExtension extends ThemeExtension<AppTypographyExtension> {
   final TextStyle ui;
@@ -107,7 +108,7 @@ class AppTypographyExtension extends ThemeExtension<AppTypographyExtension> {
         h200 = TextStyle(
           color: dimFontColor,
           fontWeight: FontWeight.w500,
-          fontSize: 14,
+          fontSize: 12,
           letterSpacing: 0,
           fontFamily: 'Inter',
         ),
@@ -266,6 +267,6 @@ class AppTypographyExtension extends ThemeExtension<AppTypographyExtension> {
       pLink: TextStyle.lerp(pLink, other.pLink, t)!,
       pLinkHover: TextStyle.lerp(pLinkHover, other.pLinkHover, t)!,
       pBlockQuote: TextStyle.lerp(pBlockQuote, other.pBlockQuote, t)!,
-);
-}
+    );
+  }
 }

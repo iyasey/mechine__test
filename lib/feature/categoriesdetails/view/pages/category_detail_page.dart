@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:mechine___test/core/theme/app_theme.dart';
 import 'package:mechine___test/feature/categoriesdetails/controller/detail_controller.dart';
 
@@ -23,12 +22,10 @@ class CategoryDetailPage extends StatelessWidget {
     final typography = AppTheme.of(context).typography;
     return Scaffold(
         appBar: AppBar(
-          title: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              taskName ?? 'Unknown user',
-              style: typography.h600.copyWith(color: colors.text),
-            ),
+          backgroundColor: colors.primary,
+          title: Text(
+            taskName ?? 'Unknown user',
+            style: typography.h600.copyWith(color: colors.text),
           ),
           centerTitle: true,
           actions: [
@@ -77,7 +74,7 @@ class CategoryDetailPage extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
-          // backgroundColor: colors.text,
+          backgroundColor: colors.primary,
           elevation: 0,
           child: Container(
             decoration: BoxDecoration(

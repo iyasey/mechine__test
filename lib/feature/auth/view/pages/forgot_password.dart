@@ -18,92 +18,99 @@ class ForgotPassword extends StatelessWidget {
     final colors = AppTheme.of(context).colors;
 
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            children: [
-              IconButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    weight: 30,
-                    color: colors.text,
-                  )),
-              SizedBox(
-                width: width * 0.1,
-              ),
-              Text(
-                "Forgot Password",
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: height * 0.3,
+            ),
+            Row(
+              children: [
+                IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      weight: 30,
+                      color: colors.text,
+                    )),
+                SizedBox(
+                  width: width * 0.1,
+                ),
+                Text(
+                  "Forgot Password",
+                  style: TextStyle(
+                      color: colors.text,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: height * 0.04,
+            ),
+            CustomTextField(controller: emailController, label: "Email"),
+            SizedBox(
+              height: height * 0.01,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Text(
+                "Enter the email address you used to create your account and",
                 style: TextStyle(
                     color: colors.text,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400),
               ),
-            ],
-          ),
-          SizedBox(
-            height: height * 0.04,
-          ),
-          CustomTextField(controller: emailController, label: "Email"),
-          SizedBox(
-            height: height * 0.01,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              "Enter the email address you used to create your account and",
+            ),
+            Text(
+              "we will send you a link to reset your password",
               style: TextStyle(
                   color: colors.text,
                   fontSize: 13,
                   fontWeight: FontWeight.w400),
             ),
-          ),
-          Text(
-            "we will send you a link to reset your password",
-            style: TextStyle(
-                color: colors.text, fontSize: 13, fontWeight: FontWeight.w400),
-          ),
-          SizedBox(
-            height: height * 0.04,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: width * 0.07),
-            child: CustomButton(
-              onPressed: () {
-                final email = emailController.text.trim();
-                if (email.isNotEmpty) {
-                  authController.forgotPassword(email);
-                } else {
-                  Get.snackbar("Error", "Please enter a valid email.");
-                }
-              },
-              txt: " CONTINUE",
+            SizedBox(
+              height: height * 0.04,
             ),
-          ),
-          SizedBox(
-            height: height * 0.04,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Don't have an account? ",
-                style: TextStyle(
-                    color: colors.text,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: width * 0.07),
+              child: CustomButton(
+                onPressed: () {
+                  final email = emailController.text.trim();
+                  if (email.isNotEmpty) {
+                    authController.forgotPassword(email);
+                  } else {
+                    Get.snackbar("Error", "Please enter a valid email.");
+                  }
+                },
+                txt: " CONTINUE",
               ),
-              Text("Register",
+            ),
+            SizedBox(
+              height: height * 0.04,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Don't have an account? ",
                   style: TextStyle(
                       color: colors.text,
                       fontSize: 13,
-                      fontWeight: FontWeight.w500))
-            ],
-          )
-        ],
+                      fontWeight: FontWeight.w500),
+                ),
+                Text("Register",
+                    style: TextStyle(
+                        color: colors.text,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500))
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

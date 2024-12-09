@@ -5,9 +5,9 @@ class AuthServices {
       {required String email,
       required String password,
       required String name}) async {
-    final UserCredential = await FirebaseAuth.instance
+    final userCredential = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
-    UserCredential.user!.updateDisplayName(name);
+    userCredential.user!.updateDisplayName(name);
   }
 
   static Future<void> logout() async {

@@ -12,22 +12,23 @@ class CustomTextField extends StatelessWidget {
     final colors = AppTheme.of(context).colors;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Material(
         elevation: 1,
         shadowColor: Colors.grey.withOpacity(0.5),
         borderRadius: BorderRadius.circular(12.0),
         child: TextFormField(
+          style: const TextStyle(color: Colors.grey),
           controller: controller,
           decoration: InputDecoration(
               label: Text(
                 label,
-                style: TextStyle(color: Colors.grey),
+                style: const TextStyle(color: Colors.grey),
               ),
               filled: true,
               fillColor: colors.secondary,
               contentPadding:
-                  EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               border: InputBorder.none),
         ),
       ),

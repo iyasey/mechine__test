@@ -34,57 +34,66 @@ class LoginPage extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final typography = AppTheme.of(context).typography;
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: Image.asset(
-              "assets/images/448146415_957315676399164_4179835088892609477_n.jpg",
-              width: width * 0.7,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: height * 0.24,
             ),
-          ),
-          SizedBox(height: height * 0.04),
-          CustomTextField(
-            controller: emailController,
-            label: "Email",
-          ),
-          SizedBox(
-            height: height * 0.03,
-          ),
-          CustomTextField(
-            controller: passwordController,
-            label: "Password",
-          ),
-          TextButton(
-            onPressed: () {
-              Get.to(ForgotPassword());
-            },
-            child: Text("Forgot password?",
-                style: typography.h300.copyWith(color: colors.text)),
-          ),
-          SizedBox(
-            height: height * 0.03,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
-            child: CustomButton(
-              onPressed: onSignInButtonClicked,
-              txt: "CONTINUE",
+            Center(
+              child: Image.asset(
+                "assets/images/448146415_957315676399164_4179835088892609477_n.jpg",
+                width: width * 0.7,
+              ),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("Don't have an account?"),
-              TextButton(
-                  onPressed: () {
-                    Get.to(SignupPage());
-                  },
-                  child: Text("Register", style: typography.h300))
-            ],
-          )
-        ],
+            SizedBox(height: height * 0.04),
+            CustomTextField(
+              controller: emailController,
+              label: "Email",
+            ),
+            SizedBox(
+              height: height * 0.03,
+            ),
+            CustomTextField(
+              controller: passwordController,
+              label: "Password",
+            ),
+            TextButton(
+              onPressed: () {
+                Get.to(ForgotPassword());
+              },
+              child: Text("Forgot password?",
+                  style: typography.h300.copyWith(color: colors.text)),
+            ),
+            SizedBox(
+              height: height * 0.03,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
+              child: CustomButton(
+                onPressed: onSignInButtonClicked,
+                txt: "CONTINUE",
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Don't have an account?",
+                  style: TextStyle(color: colors.text),
+                ),
+                TextButton(
+                    onPressed: () {
+                      Get.to(SignupPage());
+                    },
+                    child: Text("Register",
+                        style: typography.h300.copyWith(color: colors.text)))
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
